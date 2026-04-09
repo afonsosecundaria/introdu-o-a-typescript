@@ -75,4 +75,67 @@ else {
 //          escreva("O número ", num, " não é primo")
 //       fimse
 // fim
+class VerificadorPrimo {
+    verificar(num) {
+        if (num <= 1)
+            return false;
+        let primo = true;
+        let divisor = num - 1;
+        while (primo && divisor > 1) {
+            if (num % divisor === 0) {
+                primo = false;
+            }
+            else {
+                divisor--;
+            }
+        }
+        return primo;
+    }
+}
+// Exemplo de uso
+const verificador = new VerificadorPrimo();
+const numero = 7;
+if (verificador.verificar(numero)) {
+    console.log(`O número ${numero} é primo`);
+}
+else {
+    console.log(`O número ${numero} não é primo`);
+}
 // 3 - Faça um programa que receba um intervalo numérico inteiro e positivo (ex. 2-10; 30-800) e retorne a quantidade de números primos existentes nesse intervalo (incluindo o início e o final). Aproveite o programa desenvolvido no exercício anterior.
+class VerificadorPrimo {
+    verificar(num) {
+        if (num <= 1)
+            return false;
+        let primo = true;
+        let divisor = num - 1;
+        while (primo && divisor > 1) {
+            if (num % divisor === 0) {
+                primo = false;
+            }
+            else {
+                divisor--;
+            }
+        }
+        return primo;
+    }
+}
+class IntervaloPrimos {
+    constructor() {
+        this.verificador = new VerificadorPrimo();
+    }
+    contarPrimos(inicio, fim) {
+        let contador = 0;
+        for (let i = inicio; i <= fim; i++) {
+            if (this.verificador.verificar(i)) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+}
+// Exemplo de uso
+const intervalo = new IntervaloPrimos();
+const inicio = 2;
+const fim = 10;
+const quantidade = intervalo.contarPrimos(inicio, fim);
+console.log(`Entre ${inicio} e ${fim} existem ${quantidade} números primos`);
